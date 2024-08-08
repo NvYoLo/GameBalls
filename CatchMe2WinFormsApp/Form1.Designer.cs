@@ -1,4 +1,4 @@
-﻿namespace GameBalls
+﻿namespace CatchMe2WinFormsApp
 {
     partial class Form1
     {
@@ -56,18 +56,18 @@
             // 
             // button3
             // 
-            button3.Location = new Point(93, 12);
+            button3.Location = new Point(12, 70);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 2;
             button3.Text = "Очистить";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click_1;
+            button3.Click += button3_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(194, 12);
+            label1.Location = new Point(120, 16);
             label1.Name = "label1";
             label1.Size = new Size(36, 15);
             label1.TabIndex = 3;
@@ -77,13 +77,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1174, 637);
+            ClientSize = new Size(800, 450);
             Controls.Add(label1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form1";
-            Text = "GameBalls";
+            Text = "CatchMe";
+            MouseClick += Form1_MouseClick;
             ResumeLayout(false);
             PerformLayout();
         }

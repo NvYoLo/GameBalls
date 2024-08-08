@@ -6,7 +6,7 @@ namespace GameBalls
 {
     public class CreateBalls
     {
-        protected Form1 form1;
+        protected Form form1;
         protected int vx = 5;
         protected int vy = -5;
         protected int x;
@@ -14,7 +14,7 @@ namespace GameBalls
         protected int width = 70;
         protected int height = 70;
         protected Random random = new Random();
-        public CreateBalls(Form1 form)
+        public CreateBalls(Form form)
         {
             form1 = form;
         }
@@ -51,7 +51,7 @@ namespace GameBalls
     public class RandomBalls : CreateBalls
     {
         
-        public RandomBalls(Form1 form) : base(form)
+        public RandomBalls(Form form) : base(form)
         {
             x = random.Next(0, form.ClientSize.Width - width);
             y = random.Next(0, form.ClientSize.Height - height);
@@ -60,7 +60,7 @@ namespace GameBalls
     public class RandomMoveBall : MoveBall
     {
         
-        public RandomMoveBall(Form1 form) : base(form)
+        public RandomMoveBall(Form form) : base(form)
         {
             vx = random.Next(-5, 6);
             vy = random.Next(-5, 5);
@@ -71,7 +71,7 @@ namespace GameBalls
     {
         private Timer timer;
         private bool isRunning;
-        public MoveBall(Form1 form) : base(form)
+        public MoveBall(Form form) : base(form)
         {
             timer = new Timer();
             timer.Interval = 200;
