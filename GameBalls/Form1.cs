@@ -5,6 +5,7 @@ namespace GameBalls
     public partial class Form1 : Form
     {
         List<MoveBall> balls;
+        private int countMouse = 0;
         public Form1()
         {
             InitializeComponent();
@@ -44,6 +45,22 @@ namespace GameBalls
                 balls[i].Clear();
             }
             BackColor = Color.White;
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (balls[i].FindBallsMouse(e.X, e.Y) && !balls[i].isTimerStatus())
+                {
+                    balls[i].Stop();
+                    if (balls[i].FindBalls())
+                    {
+                        countMouse++;
+                        label1.Text = countMouse.ToString();
+                    }
+                }
+            }
         }
     }
 }

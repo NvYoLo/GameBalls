@@ -67,11 +67,13 @@ namespace GameBalls
     public class MoveBall : RandomBalls
     {
         private Timer timer;
+        private bool isRunning;
         public MoveBall(Form1 form) : base(form)
         {
             timer = new Timer();
-            timer.Interval = 2;
+            timer.Interval = 200;
             timer.Tick += Timer_Tick;
+            isRunning = false;
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -86,10 +88,20 @@ namespace GameBalls
         public void Stop()
         {
             timer.Stop();
+            isRunning = true;
+        }
+        public bool isTimerStatus()
+        {
+            return isRunning;
         }
         public bool FindBalls()
         {
            return x>= 0  && x + width <= form1.ClientSize.Width && y>=0 && y + height <= form1.ClientSize.Height;
+        }
+        public bool FindBallsMouse(int mouseX, int mouseY)
+        {
+            if (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height) return true;
+            return false;
         }
     }
 }
