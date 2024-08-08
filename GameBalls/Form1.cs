@@ -4,7 +4,7 @@ namespace GameBalls
 {
     public partial class Form1 : Form
     {
-        List<MoveBall> balls;
+        List<RandomMoveBall> balls;
         private int countMouse = 0;
         public Form1()
         {
@@ -14,10 +14,10 @@ namespace GameBalls
         private void button1_Click(object sender, EventArgs e)
         {
             BackColor = Color.White;
-            balls = new List<MoveBall>();
+            balls = new List<RandomMoveBall>();
             for (int i = 0; i < 10; i++)
             {
-                var moveBall = new MoveBall(this);
+                var moveBall = new RandomMoveBall(this);
                 balls.Add(moveBall);
                 balls[i].Start();
             }
