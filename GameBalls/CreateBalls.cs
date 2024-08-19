@@ -7,12 +7,11 @@ namespace GameBalls
     public class CreateBalls
     {
         protected Form form1;
-        protected int vx = 5;
-        protected int vy = -5;
-        protected int x;
-        protected int y;
-        protected int width = 70;
-        protected int height = 70;
+        protected int vx = 10;
+        protected int vy = 10;
+        protected int centerX;
+        protected int centerY;
+        protected int radius = 25;
         protected Random random = new Random();
         public CreateBalls(Form form)
         {
@@ -22,7 +21,7 @@ namespace GameBalls
         {
             var graph = form1.CreateGraphics();
             var brush = Brushes.Aqua;
-            var rectangle = new Rectangle(x, y, width, height);
+            var rectangle = new Rectangle(centerX, centerY, radius, radius);
             graph.FillEllipse(brush, rectangle);
         }
 
@@ -30,14 +29,14 @@ namespace GameBalls
         {
             var graph = form1.CreateGraphics();
             var brush = Brushes.White;
-            var rectangle = new Rectangle(x, y, width, height);
+            var rectangle = new Rectangle(centerX, centerY, radius, radius);
             graph.FillEllipse(brush, rectangle);
         }
 
         public void Go()
         {
-            x += vx;
-            y += vy;
+            centerX += vx;
+            centerY += vy;
         }
         public void Move()
         {
@@ -53,8 +52,8 @@ namespace GameBalls
         
         public RandomBalls(Form form) : base(form)
         {
-            x = random.Next(0, form.ClientSize.Width - width);
-            y = random.Next(0, form.ClientSize.Height - height);
+            centerX = random.Next(0, form.ClientSize.Width - radius);
+            centerY = random.Next(0, form.ClientSize.Height - radius);
         }
     }
     public class RandomMoveBall : MoveBall
@@ -99,11 +98,11 @@ namespace GameBalls
         }
         public bool FindBalls()
         {
-           return x>= 0  && x + width <= form1.ClientSize.Width && y>=0 && y + height <= form1.ClientSize.Height;
+           return centerX>= 0  && centerX + radius <= form1.ClientSize.Width && centerY>=0 && centerY + radius <= form1.ClientSize.Height;
         }
         public bool FindBallsMouse(int mouseX, int mouseY)
         {
-            if (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height) return true;
+            if (mouseX >= centerX && mouseX <= centerX + radius && mouseY >= centerY && mouseY <= centerY + radius) return true;
             return false;
         }
     }

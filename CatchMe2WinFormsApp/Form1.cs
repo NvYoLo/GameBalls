@@ -23,22 +23,21 @@ namespace CatchMe2WinFormsApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            if (balls != null)
             {
-                if (balls[i].FindBallsMouse(e.X, e.Y) && !balls[i].isTimerStatus())
+                for (int i = 0; i < 10; i++)
                 {
-                    balls[i].Stop();
-                    if (balls[i].FindBalls())
+                    if (balls[i].FindBallsMouse(e.X, e.Y) && !balls[i].isTimerStatus())
                     {
-                        countMouse++;
-                        label1.Text = countMouse.ToString();
+                        balls[i].Stop();
+                        if (balls[i].FindBalls())
+                        {
+                            countMouse++;
+                            label1.Text = countMouse.ToString();
+                        }
                     }
                 }
             }
